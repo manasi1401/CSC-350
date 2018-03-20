@@ -1,0 +1,60 @@
+* Code compiles and runs without crashing
+- Code computes a histogram of symbols, which is read/written to encoded file
+* All team members show repository activity
+-------------------------------------------------------------------------------
+
+You know, if you call your makefile 'makefile' or 'Makefile' then you don't
+have to specify it on the make line, right?
+
+% make
+
+vs
+
+% make -f makeFile.mk
+
+
+The histogram needs to be written to the output (compressed) file in binary.
+Right now you're just printing it to the output file.  After you generate
+the histogram (which you appear to be doing) you need to write the 256
+element array/vector to the beginning of the compressed file.  You'll need
+this when you're going to uncompress the file.  After this checkpoint, what
+I expect is the output file will be 1024 bytes in length and contain 256
+integers which represent the frequency of each of the 256 bytes found in the
+input file.
+
+In addition, when running your executable with the -d command line option I
+would expect your code to read that 1024 byte histogram in from the compressed
+file so that you can create the huffman tree.  You're not writing out the
+histogram to the output file so the -d option is also not yet working.
+
+Checkpoint #2 requires that you create the histogram and build a huffman code
+tree.  You will need to write (not print) the histogram to the output file.
+You will also need to read that histogram from the compressed file and create
+the huffman code tree.  The checkpoints are meant to keep you on track for
+the final delivery.  If you have questions, ask them during class or drop
+by the office to get them answered.
+
+-------------------------------- Checkpoint # 2 -------------------------------
+- All elements from Checkpoint #1
+- Huffman tree is built correctly
+- Decoder and Encoder writes binary file
+- Decoder reads binary file
+-------------------------------------------------------------------------------
+When bringing over the commit hash c7e14c161d3718, compiling and running I
+get:
+
+% git checkout c7e14c161d3718
+% make -f makefile.mk
+% huffman -e input out
+
+A 5
+terminate called after throwing an instance of 'std::out_of_range'
+  what():  basic_string::erase
+Aborted (core dumped)
+
+The failure is coming from HuffmanBinaryTree::traverse.
+
+The HuffmanBinaryTree class is nicely structured, the rest of the code is a
+bit of a mess (e.g. main.cpp).  There is some refactoring to do before
+submission and chasing down this bug.  I see there are commits after the
+one I tested so perhaps this problem has been addressed.
