@@ -1,0 +1,59 @@
+* Code Compiles
+* Code runs and brings up a window
+* At least some of the palette is being drawn
+* The palette behaves correctly when the window is resized
+- All team members show repository activity
+-------------------------------------------------------------------------------
+Looking good so far.  There is some imbalance between the team members
+(1 vs 6 commits) in terms of repo activity.  This can be caused by a number
+of things:
+
+* You're doing paired programming under a single team member's account
+* Some team members do more frequent commits than the others
+* Some team members aren't pulling their weight
+
+If it's the first one, make sure and put something in the commit message that
+indicates work is being done while paired programming.  Example:
+
+   Created callbacks.cpp and callbacks.h [paired]
+
+If it's the second one, check to see you're doing frequent commits but not
+committing every time a single line of code gets changed.
+
+If it's the third one, then work at scheduling time to work on the project so
+you're not putting all the burden on other team members.
+
+It could also be that one of the team members is an 'gunner' who grabs projects
+and runs with them in the exclusion of all else leaving little for other team
+members to do.  We would like to also avoid this.
+
+Not a problem (yet).  Keep an eye on it.
+-----Checkpoint # 2------------------------------------------------------------
+- Checkpoint One Requirements (does not compile, missing mouse.h)
+* Full Palette Displayed
+  Function Headers
+* Select Border Color
+* Select Fill Color
+- Can draw at least one shape
+-------------------------------------------------------------------------------
+After the latest push I see the code compiles with some warnings.
+
+I can get a rectangle to draw but it looks like there is something amiss with
+the coordinates.  Remember that openGL numbers the Y-axis with increasing 
+Y-values as you move down the window.  Make sure that you are taking that
+into account when creating the coordinate and offsets for your shapes.
+
+Your output statements indicate that you are correctly detecting when colors
+in your palette are chosen.  I don't see an indication on the palette or
+tool area as to which color was chosen.
+
+The repository activity is much more balanced then during Checkpoint #1
+
+Good job adding author information to functions, it helps me see who is working
+on what part of the code.
+
+Keep working to get the requirements met.  There won't be a weekly assignment
+next week to give the teams a chance to concentrate on the project.  Once you
+have things working, consider going through and refactoring the code to make
+it more readable, maintainable, modular, etc.
+-------------------------------------------------------------------------------

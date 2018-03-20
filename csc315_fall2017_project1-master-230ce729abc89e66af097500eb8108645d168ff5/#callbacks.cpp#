@@ -1,0 +1,146 @@
+#include "callbacks.h"
+
+/***************************************************************************//**
+ * @author Paul Hinker
+ *
+ * @brief A callback function for refreshing the display
+ ******************************************************************************/
+void display()
+{
+    // Clear the window
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    glutInitWindowSize(640, 480);
+    glutInitWindowPosition(100, 100);
+        float height = glutGet(GLUT_WINDOW_HEIGHT)/ 12;
+	float width = height;
+   // DrawLine( 10, 20, glutGet(GLUT_WINDOW_WIDTH) - 10, 
+     //         glutGet(GLUT_WINDOW_HEIGHT) - 20, Yellow );
+   // DrawRectangle( 500, 400, 700, 500, Cyan );
+   DrawFilledRectangle( 0, 0, height, height, Red );
+   DrawFilledRectangle(width, 0, 2*width, height, White);
+   DrawFilledRectangle( 0, height, width, 2*height, Green );
+   DrawFilledRectangle( width, height, 2*width, 2*height, Yellow );
+   DrawFilledRectangle( 0, 2*height, width, 3*height, Magenta );
+   DrawFilledRectangle( width, 2*height, 2*width, 3*height, Cyan );
+
+   DrawFilledRectangle(0, 3*height, width, 4*height, Grey );
+   DrawFilledRectangle( width, 3*height, 2*width, 4*height, Brown );
+   DrawFilledRectangle( 0, 4*height, 2*width, 5*height, Orange );
+   DrawFilledRectangle( width, 4*height, 2*width, 5*height, Gold );
+   DrawRectangle( 0, 5*height, width, 6*height, White );
+	//inner cirlce
+   DrawEllipse(20, 20, width/2, 5.5*height, White);
+	//inner filled circle
+   DrawFilledEllipse(20, 20, 1.5*width, 5.5*height, Yellow);
+   DrawRectangle( width, 5*height, 2*width, 6*height, White );
+   DrawRectangle( 0, 6*height, width, 7*width, White);
+	//inner rectangle
+   DrawRectangle(width*(0.2), 6.2*height, width*(0.8), height*(6.8), White);
+   DrawRectangle(width, 6*height, 2*width, 7*height, White); 
+	//inner filled rectangle
+   DrawFilledRectangle(width*(1.2), 6.2*height, width*(1.8), height*(6.8), Yellow);
+	//inner line
+	DrawLine(width*(1.2), height*(7.2), width*(1.8), height*(7.8), White);
+   DrawRectangle( 0, 7*height, width, 8*width, White);
+   DrawRectangle(width, 7*height, 2*width, 8*height, White); 
+// DrawEllipse( 100, 50, 600, 200, Green );
+
+   	//DrawEllipse( 100, 50, 600, 200, Green );
+
+  //  DrawFilledEllipse( 100, 50, 250, 450, Magenta );
+
+
+    //DrawFilledEllipse( 100, 50, 250, 450, Magenta );
+
+
+    // label display with text
+  //DrawTextString( "OpenGL Demo", 32, 800 - 32, White );
+    //
+    // Swap the buffers
+    glutSwapBuffers();
+}
+
+/***************************************************************************//**
+ * @brief A callback function for handling keyboard input
+ *
+ * @param[in] key - the key that was pressed
+ * @param[in] x   - the x-coordinate when the key was pressed
+ * @param[in] y   - the y-coordinate when the key was pressed
+ ******************************************************************************/
+void keyboard(unsigned char key, int x, int y)
+{
+   // Pressing the ESCAPE Key will exit from the main glut loop
+   
+   int ScreenHeight = glutGet(GLUT_WINDOW_HEIGHT);
+
+   y = ScreenHeight - y;
+
+   if (key == ESCAPE_KEY)
+      glutLeaveMainLoop();
+   else
+      cout << "Key " << (char)key << " press detected at ["
+           << x << ", " << y << "]\n";
+}
+
+/***************************************************************************//**
+ * @brief A callback function for handling reshape events
+ *
+ * @param[in] w      - the width of the newly reshaped window
+ * @param[in] h      - the height of the newly reshaped window
+ ******************************************************************************/
+void reshape(int w, int h)
+{
+
+    glMatrixMode( GL_PROJECTION );      // use an orthographic projection
+    glLoadIdentity();                   // initialize transformation matrix
+    gluOrtho2D( 0.0, w, 0.0, h );       // make OpenGL coordinates
+    glViewport( 0, 0, w, h );           // the same as the screen coordinates
+}
+
+/***************************************************************************//**
+ * @brief A callback function for handling mouse click events
+ *
+ * @param[in] button - the mouse button pushed
+ * @param[in] state  - the state of the button (i.e. GLUT_UP, GLUT_DOWN)
+ * @param[in] x      - the x-coordinate when the button is pressed
+ * @param[in] y      - the y-coordinate when the button is pressed
+ ******************************************************************************/
+void mouseClick( int button, int state, int x, int y )
+{
+    // correct for upside-down screen coordinates
+    int ScreenHeight = glutGet(GLUT_WINDOW_HEIGHT);
+    y = ScreenHeight - y;
+
+	static int y0, y1, x0, x1;
+
+	if(state == GLUT_DOWN)
+    {
+       y0 = y;
+       x0 = x;
+    }       
+
+    if(state == GLUT_UP)
+    {
+        //Drawing the Eleipse
+        //x1 = abs(x - x0) ;
+        //y1 = abs(y - y0) ;
+        //DrawEllipse(x1, y1, x0, y0, Green);
+        
+        //Draw the Rectangle
+        //DrawRectangle(x0, y0, x, y, Red);
+        
+        // Draw the line
+        //DrawLine(x0, y0, x, y, White);
+            
+    } 
+    
+    
+    cout << "Mouse button " << ButtonName[button] << " went " << ButtonState[state] << " at coordinates [" << x << ", " << y << "]\n";
+}
+
+
+
+
+
+
