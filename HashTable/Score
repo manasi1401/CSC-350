@@ -1,0 +1,81 @@
+* Code compiles and runs without crashing
+  Input text is tokenized correctly into words
+  Hash table and hash function are coded
+  All team members show repository activity
+-------------------------------------------------------------------------------
+- Make sure you remember to lowercase the words
+- Quite an imbalance in the repository activity, make sure everyone is pitching
+  in.  I do see one mention of paired programming
+- Your HashTable InsertNode implementation is not right.  You would not
+  expect the user to call HashKeyGenerator.  In this implementation
+  I want to just give the key.  Example:
+
+   Hash HashTable;
+
+   HashTable.insert("Mickey");
+
+   The insert function should call HashKeyGenerator and then insert the key
+   into the correct place.
+
+   The workings of the hashcode should be abstracted away from the user.
+-------------------------------------------------------------------------------
+* All requirements from Checkpoint #1
+* Hashing: insert and find ops work correctly (using linear probing)
+- Word concordance built correctly
+-------------------------------------------------------------------------------
+Much better than checkpoint #1.  Still some issues.  When I run your program
+as follows:
+
+% zip ../Reference/test.txt
+
+I get the following error message:
+
+[phinker@10-0-2-15-static PasteChmielewski]$ zipf ../Reference/test.txt
+Created hash table of size 1009.
+Error opening /Reference/test.wrd
+_____________________________________________________________
+|                                                           |
+|                     HOW TO RUN THE FILE                   |
+|-----------------------------------------------------------|
+|c:\zipf textfile                                           |
+|-----------------------------------------------------------|
+|                DESCRIPTION OF THE ARGUMENTS               |
+|-----------------------------------------------------------|
+|zipf - name of the executable which is stored in           |
+|       argv[0].                                            |
+|                                                           |
+|textfile - Some text file of any size that the program     |
+|           will run which is stored in argv[1].            |
+|___________________________________________________________|
+Error opening /Reference/test.csv
+_____________________________________________________________
+|                                                           |
+|                     HOW TO RUN THE FILE                   |
+|-----------------------------------------------------------|
+|c:\zipf textfile                                           |
+|-----------------------------------------------------------|
+|                DESCRIPTION OF THE ARGUMENTS               |
+|-----------------------------------------------------------|
+|zipf - name of the executable which is stored in           |
+|       argv[0].                                            |
+|                                                           |
+|textfile - Some text file of any size that the program     |
+|           will run which is stored in argv[1].            |
+|___________________________________________________________|
+
+Word Frequencies                             Ranks     Avg Rank
+----------------                             -----     --------
+Words occurring 2 times:                         1          1.0
+of
+
+Words occurring once:                         2-12          7.0
+all          and          chiefs          course          tear
+them          then          they          through          went
+zebras
+
+
+Read 13 words from the file ../Reference/test.txt.
+Inserted 12 distinct words into the hash table.
+Elapsed time = 0.0 msec
+
+So it appears to be opening the input file but not the .wrd file correctly
