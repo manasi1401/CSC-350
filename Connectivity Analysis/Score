@@ -1,0 +1,31 @@
+  Compiles without crashing or errors
+  Image input
+  Grayscale
+  Binary Thresholding
+  Display
+  All team members show repo activity
+-------------------------------------------------------------------------------
+There was a fair amount of provided code for this project.  The largest part of
+this first checkpoint is to understand the provided code and put together a
+plan and design your final solution.
+
+Your program segmentation faults when run on the OppLab machines and my 
+office machine.  This is most likely due to the Nvidia openGL libraries which
+have a bug that is triggered by strings.  Link with the pthread library 
+(i.e. add -lpthread to the LIBS macro) to workaround this problem.  I mentioned
+this in class after the project was assigned.
+
+-------------------------------------------------------------------------------
+* Pass One - Assign labels 
+* Pass Two - Label Blobs
+- Labeling blobs needs to be an efficient operation
+* Pseudocolor blobs
+* Display pseudocolor blobs
+- Perform size filtering
+* Pseudocolor filtered blobs
+* Display size filtered, pseudocolored blobs
+-------------------------------------------------------------------------------
+I'm seeing a couple problems.  First, you're showing two size filtered images
+and no unfiltered pseudocolored image.  Second, your connected component code
+is missing some pixels in the first row causing a mismatch when I test against
+the reference implementation.
